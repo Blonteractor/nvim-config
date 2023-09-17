@@ -5,6 +5,6 @@ Rust and Go developement.
 
 ## Installation
 
-```
+```bash
 curl https://raw.githubusercontent.com/Blonteractor/nvim-config/main/install.sh | sh
 ```
