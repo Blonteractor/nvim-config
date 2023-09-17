@@ -56,6 +56,11 @@ M.mason = {
     "pyright",
     "pylyzer",
     "pyink",
+
+    --random
+    "commitlint",
+    "actionlint",
+    "protolint",
   },
 }
 
