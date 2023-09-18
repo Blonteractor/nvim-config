@@ -73,6 +73,12 @@ M.compiler = {
   },
 }
 
+M.gitsigns = {
+  n = {
+    ["<leader>lg"] = { "<cmd>LazyGit<cr>", "Open lazygit", opts = { silent = true, noremap = true } },
+  },
+}
+
 -- M.lines = {
 --   n = {
 --     ["<leader>l"] = { require("lsp_lines").toggle, "toggle lsp lines", opts = { silent = true, noremap = true } },
