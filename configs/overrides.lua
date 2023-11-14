@@ -17,6 +17,7 @@ M.treesitter = {
     "regex",
     "bash",
     "go",
+    "dockerfile",
   },
   indent = {
     enable = true,
@@ -61,6 +62,7 @@ M.mason = {
     "commitlint",
     "actionlint",
     "protolint",
+    "dockerfile-language-server",
   },
 }
 

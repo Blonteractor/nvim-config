@@ -8,7 +8,7 @@ local options = {
   },
   tools = {
     inlay_hints = {
-      auto = true,
+      auto = false,
     },
   },
 }

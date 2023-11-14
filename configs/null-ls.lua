@@ -42,7 +42,8 @@ local sources = {
   },
 
   -- go
-  b.formatting.gofumpt,
+  -- b.formatting.gofumpt,
+  b.formatting.golines,
   b.formatting.goimports,
   b.code_actions.gomodifytags,
   b.code_actions.impl,
