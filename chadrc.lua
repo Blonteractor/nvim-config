@@ -5,8 +5,8 @@ local M = {}
 local highlights = require "custom.highlights"
 
 M.ui = {
-  theme = "monochrome",
-  theme_toggle = { "github_light", "monochrome" },
+  theme = "radium",
+  theme_toggle = { "github_light", "radium" },
   lsp_semantic_tokens = true,
 
   hl_override = highlights.override,

@@ -4,7 +4,19 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver", "gopls", "pyright", "pylyzer", "sqlls", "dockerls", "zls", "hls" }
+local servers = {
+  "html",
+  "cssls",
+  "tsserver",
+  "gopls",
+  "sqlls",
+  "dockerls",
+  "zls",
+  "hls",
+  -- "ruff_lsp",
+  "eslint",
+  "pylsp",
+}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -19,6 +31,14 @@ lspconfig.clangd.setup {
   cmd = {
     "clangd",
     "--offset-encoding=utf-16",
+  },
+}
+
+lspconfig.elixirls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {
+    "/opt/homebrew/bin/elixir-ls",
   },
 }
 --
