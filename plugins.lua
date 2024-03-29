@@ -28,18 +28,36 @@ local plugins = {
     },
 
     dependencies = {
-      -- format & linting
-      {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-          require "custom.configs.null-ls"
-        end,
-      },
+      "stevearc/conform.nvim",
     },
+
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
     end, -- Override to setup mason-lspconfig
+  },
+
+  {
+    "stevearc/conform.nvim",
+    event = { "BufWritePre" },
+    keys = {
+      {
+        "<leader>f",
+        function()
+          require("conform").format { async = true, lsp_fallback = true }
+        end,
+        mode = "",
+        desc = "Format buffer",
+      },
+    },
+    cmd = { "ConformInfo" },
+    opts = {
+      format_on_save = { timeout_ms = 500, lsp_fallback = true },
+    },
+    init = function()
+      -- If you want the formatexpr, here is the place to set it
+      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+    end,
   },
 
   -- override plugin configs
@@ -145,13 +163,21 @@ local plugins = {
       require("rust-tools").setup(opts)
     end,
   },
+  -- {
+  --   'mrcjkb/rustaceanvim',
+  --   version = '^4', -- Recommended
+  --   ft = { 'rust' },
+  --   config = function()
+  --     vim.g.rustaceanvim = require("custom.configs.rust-tools")
+  --   end,
+  -- },
 
   {
-  "otavioschwanck/arrow.nvim",
-  opts = {
-    show_icons = true,
-    leader_key = ';' -- Recommended to be a single key
-  }
+    "otavioschwanck/arrow.nvim",
+    opts = {
+      show_icons = true,
+      leader_key = ";", -- Recommended to be a single key
+    },
   },
 
   {
