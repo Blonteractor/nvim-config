@@ -1,6 +1,20 @@
 ---@type MappingsTable
 local M = {}
 
+M.lspconfig = {
+  plugin = true,
+
+  n = {
+    ["gt"] = {
+      function()
+        vim.lsp.buf.type_definition()
+      end,
+      "LSP definition type",
+    },
+  }
+
+}
+
 M.general = {
   n = {
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
