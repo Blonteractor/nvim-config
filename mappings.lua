@@ -5,14 +5,41 @@ M.lspconfig = {
   plugin = true,
 
   n = {
+    ["gd"] = {
+      function()
+        require("telescope.builtin").lsp_definitions()
+      end,
+      "LSP definition"
+    },
+
+    ["gr"] = {
+      function()
+        require("telescope.builtin").lsp_references()
+      end,
+      "LSP definition"
+    },
+
+    ["<leader>ds"] = {
+      function()
+        require("telescope.builtin").lsp_document_symbols()
+      end,
+      "LSP document symbols"
+    },
+
+    ["<leader>ws"] = {
+      function()
+        require("telescope.builtin").lsp_workspace_symbols()
+      end,
+      "LSP document symbols"
+    },
+
     ["gt"] = {
       function()
-        vim.lsp.buf.type_definition()
+        require("telescope.builtin").lsp_type_definitions()
       end,
-      "LSP definition type",
+      "LSP peek definition"
     },
   }
-
 }
 
 M.general = {
