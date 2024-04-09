@@ -5,9 +5,10 @@ local M = {}
 local highlights = require "custom.highlights"
 
 M.ui = {
-  theme = "radium",
-  theme_toggle = { "github_light", "radium" },
+  theme = "catppuccin",
+  theme_toggle = { "github_light", "catppuccin" },
   lsp_semantic_tokens = true,
+  transparency = true,
 
   hl_override = highlights.override,
   hl_add = highlights.add,
@@ -15,6 +16,13 @@ M.ui = {
   nvdash = {
     load_on_startup = true,
   },
+
+  lsp = {
+    signature = {
+      silent = true,
+      disabled = false,
+    }
+  }
 }
 
 M.plugins = "custom.plugins"

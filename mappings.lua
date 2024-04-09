@@ -1,6 +1,44 @@
 ---@type MappingsTable
 local M = {}
 
+M.rust = {
+  n = {
+    ["<leader>od"] = {
+      function()
+        vim.cmd.RustLsp('openDocs')
+      end,
+      "Open docs.rs documentation"
+    },
+
+    ["<leader>er"] = {
+      function()
+        vim.cmd.RustLsp('explainError')
+      end,
+      "Explain error"
+    },
+
+    ["<leader>ed"] = {
+      function()
+        vim.cmd.RustLsp('renderDiagnostic')
+      end,
+      "Render diagnostics"
+    },
+
+    ["<leader>ct"] = {
+      function()
+        vim.cmd.RustLsp('openCargo')
+      end,
+      "Open Cargo.toml"
+    },
+
+    ["<leader>pm"] = {
+      function()
+        vim.cmd.RustLsp('parentModule')
+      end,
+      "Open parent module"
+    }
+  }
+}
 M.lspconfig = {
   plugin = true,
 
