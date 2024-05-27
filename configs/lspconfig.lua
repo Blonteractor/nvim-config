@@ -16,6 +16,7 @@ local servers = {
   -- "ruff_lsp",
   "eslint",
   "pylsp",
+  "rust_analyzer"
 }
 
 for _, lsp in ipairs(servers) do
@@ -24,6 +25,19 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+lspconfig.rust_analyzer.setup {
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    vim.keymap.set('n', '<leader>od', function()
+      client.request('experimental/externalDocs', vim.lsp.util.make_position_params(), function(_, url)
+        vim.fn.jobstart(string.format("open %s", url))
+      end, vim.api.nvim_get_current_buf())
+    end, { noremap = true, silent = true })
+
+    on_attach(client, bufnr)
+  end,
+}
 
 lspconfig.clangd.setup {
   on_attach = on_attach,

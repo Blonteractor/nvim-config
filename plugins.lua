@@ -23,7 +23,7 @@ local plugins = {
       },
       autoformat = true,
       inlay_hints = {
-        enabled = true,
+        enabled = false,
       },
     },
 
@@ -72,6 +72,12 @@ local plugins = {
   },
 
   {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+  },
+
+  {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
   },
@@ -110,6 +116,11 @@ local plugins = {
   },
 
   {
+    "christoomey/vim-tmux-navigator",
+    lazy = false
+  },
+
+  {
     "ThePrimeagen/vim-be-good",
     cmd = "VimBeGood",
   },
@@ -122,10 +133,16 @@ local plugins = {
       return M
     end,
   },
-  -- {
-  --   "github/copilot.vim",
-  --   lazy = false,
-  -- },
+
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    lazy = false,
+    config = function(_, _)
+      require("todo-comments").setup()
+    end
+  },
+
   {
     "IndianBoy42/tree-sitter-just",
     ft = "just",
@@ -152,15 +169,15 @@ local plugins = {
   --   end,
   -- },
 
-  {
-    'mrcjkb/rustaceanvim',
-    version = '^4',
-    ft = { 'rust' },
-    config = function()
-      vim.g.rustaceanvim = require("custom.configs.rustaceanvim")
-    end,
-    dependencies = "neovim/nvim-lspconfig"
-  },
+  -- {
+  --   'mrcjkb/rustaceanvim',
+  --   version = '^4',
+  --   ft = { 'rust' },
+  --   config = function()
+  --     vim.g.rustaceanvim = require("custom.configs.rustaceanvim")
+  --   end,
+  --   dependencies = "neovim/nvim-lspconfig"
+  -- },
 
   {
     "otavioschwanck/arrow.nvim",
@@ -245,6 +262,18 @@ local plugins = {
   {
     "tpope/vim-repeat",
     lazy = false,
+  },
+
+  {
+    "LhKipp/nvim-nu",
+    -- ft = { "nu", "nurfile" },
+    lazy = false,
+    opts = {
+      use_lsp_features = false
+    },
+    config = function(_, opts)
+      require 'nu'.setup(opts)
+    end
   },
 
   -- To make a plugin not be loaded
