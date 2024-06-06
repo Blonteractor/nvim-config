@@ -3,7 +3,7 @@ local overrides = require "custom.configs.overrides"
 ---@type NvPluginSpec[]
 local plugins = {
 
-  -- Override plugin definition options
+  { "NvChad/nvim-colorizer.lua", enabled = false },
 
   {
     "neovim/nvim-lspconfig",
@@ -200,7 +200,7 @@ local plugins = {
     opts = {},
   },
 
-  { "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
+  { "ellisonleao/glow.nvim",     config = true,  cmd = "Glow" },
 
   {
     "folke/noice.nvim",
@@ -266,16 +266,30 @@ local plugins = {
 
   {
     "LhKipp/nvim-nu",
-    -- ft = { "nu", "nurfile" },
+    ft = { "nu", "nurfile" },
     lazy = false,
     opts = {
-      use_lsp_features = false
+      use_lsp_features = true,
     },
     config = function(_, opts)
       require 'nu'.setup(opts)
     end
   },
 
+  {
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    opts = {
+      api_key_cmd = "gpg --decrypt /Users/priyanshu/openapikey.gpg"
+    },
+    config = true,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "folke/trouble.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
+  }
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
