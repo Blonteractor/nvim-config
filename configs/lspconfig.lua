@@ -16,7 +16,8 @@ local servers = {
   -- "ruff_lsp",
   "eslint",
   "pylsp",
-  "rust_analyzer"
+  "rust_analyzer",
+  "wgsl_analyzer"
 }
 
 for _, lsp in ipairs(servers) do
@@ -27,6 +28,16 @@ for _, lsp in ipairs(servers) do
 end
 
 lspconfig.rust_analyzer.setup {
+  on_init = function(client)
+    local path = client.workspace_folders[1].name
+
+    if path == '/Users/priyanshu/dev/aftershoot/backend' then
+      client.config.settings["rust-analyzer"].cargo.features = { "editing", "culling", "dbmigration" }
+    end
+
+    client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+    return true
+  end,
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>od', function()
@@ -37,6 +48,11 @@ lspconfig.rust_analyzer.setup {
 
     on_attach(client, bufnr)
   end,
+  settings = {
+    ['rust-analyzer'] = {
+      cargo = { features = {} },
+    }
+  }
 }
 
 lspconfig.clangd.setup {

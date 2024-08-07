@@ -59,7 +59,6 @@ local plugins = {
       vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
   },
-
   -- override plugin configs
   {
     "williamboman/mason.nvim",
@@ -132,6 +131,35 @@ local plugins = {
       table.insert(M.sources, { name = crates })
       return M
     end,
+  },
+
+  {
+    "otavioschwanck/arrow.nvim",
+    opts = {
+      show_icons = false,
+      leader_key = '-',        -- Recommended to be a single key
+      buffer_leader_key = 'm', -- Per Buffer Mappings
+    },
+    config = function(_, opts)
+      require("arrow").setup(opts)
+    end,
+    lazy = false,
+  },
+  {
+    'ThePrimeagen/git-worktree.nvim',
+    opts = {
+      change_directory_command = "cd",
+      update_on_change = true,
+      update_on_change_command = "e .",
+      clearjumps_on_change = true,
+      autopush = false
+    },
+    config = function(_, opts)
+      require("git-worktree").setup(opts)
+      require("telescope").load_extension("git_worktree")
+    end,
+    lazy = false,
+    dependencies = "nvim-telescope/telescope.nvim"
   },
 
   {

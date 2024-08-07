@@ -150,6 +150,23 @@ M.nvimtree = {
 }
 
 M.noice = {
+  views = {
+    mini = {
+      win_options = {
+        winblend = 0
+      }
+    }
+  },
+  commands = {
+    errors = {
+      -- options for the message history that you get with `:Noice`
+      view = "popup",
+      opts = { enter = true, format = "details" },
+      -- filter = { error = true },
+      filter_opts = { reverse = true },
+    }
+  },
+
   lsp = {
     -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
     override = {
@@ -159,15 +176,16 @@ M.noice = {
     },
 
     hover = {
-      enabled = false,
+      enabled = true,
+      silent = true,
     },
 
     signature = {
-      enabled = false,
+      enabled = true,
     },
 
     progress = {
-      enabled = false,
+      enabled = true,
     },
   },
 

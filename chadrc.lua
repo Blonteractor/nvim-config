@@ -5,8 +5,8 @@ local M = {}
 local highlights = require "custom.highlights"
 
 M.ui = {
-  theme = "catppuccin",
-  theme_toggle = { "github_light", "catppuccin" },
+  theme = "gruvbox",
+  theme_toggle = { "github_light", "gruvbox" },
   lsp_semantic_tokens = true,
   transparency = true,
 
@@ -15,6 +15,19 @@ M.ui = {
 
   nvdash = {
     load_on_startup = true,
+    header = {
+      "██████╗ ██╗      ██████╗ ███╗   ██╗",
+      "██╔══██╗██║     ██╔═══██╗████╗  ██║",
+      "██████╔╝██║     ██║   ██║██╔██╗ ██║",
+      "██╔═══╝ ██║     ██║   ██║██║╚██╗██║",
+      "██║     ███████╗╚██████╔╝██║ ╚████║",
+      "╚═╝     ╚══════╝ ╚═════╝ ╚═╝  ╚═══╝",
+    }
+
+  },
+
+  tabufline = {
+    enabled = false
   },
 
   lsp = {
@@ -22,6 +35,10 @@ M.ui = {
       silent = true,
       disabled = false,
     }
+  },
+
+  statusline = {
+    disabled = true
   }
 }
 

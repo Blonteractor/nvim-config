@@ -86,9 +86,14 @@ M.general = {
     ["<C-l>"] = { "<cmd> TmuxNavigateRight<CR>", "window right" },
     ["<C-j>"] = { "<cmd> TmuxNavigateDown<CR>", "window down" },
     ["<C-k>"] = { "<cmd> TmuxNavigateUp<CR>", "window up" },
-    [";"] = { ":", "enter command mode", opts = { nowait = true } },
+    ["\\"] = { "<cmd> Telescope buffers<CR>", "search open buffers" },
+    ["<leader><leader>"] = { "<C-^>", "Switch buffers" },
+    ["<leader>x"] = { "<cmd> bdelete<CR>", "Delete current buffer", opts = { nowait = true } },
+    -- [";"] = { ":", "enter command mode", opts = { nowait = true } },
     ["<C-d>"] = { "<C-d>zz", opts = { nowait = true } },
     ["<C-u>"] = { "<C-u>zz", opts = { nowait = true } },
+    ["<C-i>"] = { "<C-i>zz", opts = { nowait = true } },
+    ["<C-o>"] = { "<C-o>zz", opts = { nowait = true } },
 
     ["n"] = { "nzz", opts = { nowait = true } },
     ["N"] = { "Nzz", opts = { nowait = true } },
@@ -125,13 +130,13 @@ M.dap = {
 
 M.trouble = {
   n = {
-    ["<leader>xx"] = { "<cmd>TroubleToggle<cr>", "toggle diagnostics", opts = { silent = true, noremap = true } },
+    ["<leader>xd"] = { "<cmd>TroubleToggle<cr>", "toggle diagnostics", opts = { silent = true, noremap = true } },
     ["<leader>xw"] = {
       "<cmd>TroubleToggle workspace_diagnostics<cr>",
       "toggle workspace diagnostics",
       opts = { silent = true, noremap = true },
     },
-    ["<leader>xd"] = {
+    ["<leader>xx"] = {
       "<cmd>TroubleToggle document_diagnostics<cr>",
       "toggle document diagnostics",
       opts = { silent = true, noremap = true },
@@ -164,6 +169,28 @@ M.compiler = {
 M.gitsigns = {
   n = {
     ["<leader>lg"] = { "<cmd>LazyGit<cr>", "Open lazygit", opts = { silent = true, noremap = true } },
+    ["<leader>ws"] = {
+      function()
+        require('telescope').extensions.git_worktree.git_worktrees()
+      end,
+      "List worktrees",
+      opts = { silent = true, noremap = true }
+    },
+    ["<leader>wd"] = {
+      function()
+        local branch = vim.fn.input("Branch: ")
+        require("git-worktree").delete_worktree(branch)
+      end,
+      "List worktrees",
+      opts = { silent = true, noremap = true }
+    },
+    ["<leader>wc"] = {
+      function()
+        require('telescope').extensions.git_worktree.create_git_worktree()
+      end,
+      "Create worktree",
+      opts = { silent = true, noremap = true }
+    },
   },
 }
 
