@@ -7,7 +7,7 @@ local lspconfig = require "lspconfig"
 local servers = {
   "html",
   "cssls",
-  "tsserver",
+  -- "tsserver",
   "gopls",
   "sqlls",
   "dockerls",
@@ -15,8 +15,10 @@ local servers = {
   "hls",
   -- "ruff_lsp",
   "eslint",
-  "pylsp",
-  "rust_analyzer",
+  "pyright",
+  -- "rust_analyzer",
+  -- "typst_lsp",
+  "ts_ls",
   "wgsl_analyzer"
 }
 
@@ -33,6 +35,7 @@ lspconfig.rust_analyzer.setup {
 
     if path == '/Users/priyanshu/dev/aftershoot/backend' then
       client.config.settings["rust-analyzer"].cargo.features = { "editing", "culling", "dbmigration" }
+      client.config.settings["rust-analyzer"].cargo.default_features = false
     end
 
     client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
@@ -51,6 +54,9 @@ lspconfig.rust_analyzer.setup {
   settings = {
     ['rust-analyzer'] = {
       cargo = { features = {} },
+      diagnostic = {
+        refresh_support = false,
+      }
     }
   }
 }

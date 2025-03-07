@@ -5,8 +5,8 @@ local M = {}
 local highlights = require "custom.highlights"
 
 M.ui = {
-  theme = "gruvbox",
-  theme_toggle = { "github_light", "gruvbox" },
+  theme = "everforest",
+  theme_toggle = { "github_light", "everforest" },
   lsp_semantic_tokens = true,
   transparency = true,
 

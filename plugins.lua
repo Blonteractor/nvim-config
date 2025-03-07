@@ -316,6 +316,11 @@ local plugins = {
       "nvim-lua/plenary.nvim",
       "folke/trouble.nvim",
       "nvim-telescope/telescope.nvim"
+    },
+    {
+      'kaarmu/typst.vim',
+      ft = 'typst',
+      lazy = false,
     }
   }
   -- To make a plugin not be loaded
